@@ -32,7 +32,7 @@ android {
     }
 
     signingConfigs {
-
+        // test
     }
 
     flavorDimensions "company"
