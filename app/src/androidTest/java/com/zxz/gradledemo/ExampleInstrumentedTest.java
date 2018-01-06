@@ -1,6 +1,7 @@
 package com.zxz.gradledemo;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
@@ -22,5 +23,13 @@ public class ExampleInstrumentedTest {
         Context appContext = InstrumentationRegistry.getTargetContext();
 
         assertEquals("com.zxz.gradledemo", appContext.getPackageName());
+    }
+
+    @Test
+    public void launchWelcomeActivity() throws Exception {
+        // Context of the app under test.
+        Context appContext = InstrumentationRegistry.getTargetContext();
+
+        appContext.startActivity(new Intent(appContext, MainActivity.class));
     }
 }
