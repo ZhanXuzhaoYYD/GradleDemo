@@ -13,20 +13,42 @@ android {
 
     buildTypes {
         debug {
-            buildConfigField "String", "API_URL", "\"http://www.baidu.com\""
-            buildConfigField "boolean", "LOG", "true"
+            applicationIdSuffix ".D"
 
-//            applicationId "\"com.zxz.gradledemo.debug\""
+            buildConfigField "String", "API_URL", "\"http://debug.com\""
+            buildConfigField "boolean", "LOG", "true"
         }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 
-            buildConfigField "String", "API_URL", "\"http://www.google.com\""
+            buildConfigField "String", "API_URL", "\"http://release.com\""
             buildConfigField "boolean", "LOG", "false"
+        }
+        staging.initWith(android.buildTypes.debug)
+        staging {
+            buildConfigField "String", "API_URL", "\"http://staging.com\""
+        }
+    }
 
-//            applicationId "\"com.zxz.gradledemo.release\""
+    signingConfigs {
 
+    }
+
+    flavorDimensions "company"
+    productFlavors {
+        rs10 {
+            dimension "company"
+            applicationId "com.yyd.rs10"
+            versionCode 3
+            versionName "1.0.3"
+        }
+
+        y10 {
+            dimension "company"
+            applicationId "com.yyd.y10"
+            versionCode 4
+            versionName "1.0.4"
         }
     }
 }
@@ -38,4 +60,6 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
+    compile 'com.blankj:utilcode:1.10.0'
 }
