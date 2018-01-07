@@ -38,3 +38,18 @@ task printProperties {
         println(cmd)
     }
 }
+
+//hello {
+//    println 'hello configuration'
+//}
+
+task hello << {
+    println 'hello execution'
+}
+
+//android.applicationVariants.all { variant ->
+//    variant.outputs.each { output ->
+//        def file = output.outputFile
+//        output.outputFile = new File(file.parent, file.name.replace(".apk", "-${variant.versionName}.apk"))
+//    }
+//}
