@@ -29,7 +29,11 @@ android {
         }
 
         release {
-            minifyEnabled false
+            // 开启混淆
+            minifyEnabled true
+            // 开启自动化缩减资源， 使用前提条件：开启混淆。注意事项：动态引用的资源肯能被移除，为了避免，需要写keep.xml。
+            shrinkResources true
+            // $gradlew clean assembleRelease -info // 获取APK缩减资源概览
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 
             applicationIdSuffix ".Release"
