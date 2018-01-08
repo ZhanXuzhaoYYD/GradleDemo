@@ -3,6 +3,7 @@ package com.zxz.gradledemo;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,7 +18,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         TextView tv = findViewById(R.id.tv);
         StringBuilder sb = new StringBuilder();
-        sb.append("applicationId: ")
+        sb.append("RS10\n")
+                .append("applicationId: ")
                 .append(AppUtils.getAppPackageName())
                 .append("\n")
                 .append("version code: ")
@@ -27,7 +29,14 @@ public class MainActivity extends AppCompatActivity {
                 .append(AppUtils.getAppVersionName());
         tv.setText(sb.toString());
 
-        startActivity(new Intent(this, WelcomeActivity.class));
+        tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toastText("rs10");
+                startActivity(new Intent(getApplicationContext(), WelcomeActivity.class));
+            }
+        });
+
 
     }
 
